@@ -2,22 +2,16 @@ import ssl
 import socket
 import OpenSSL
 
+
 class SSLPinner:
     def __init__(self, host):
         self.host = host
-    
+
     def get_cert(self):
         try:
             context = ssl.create_default_context()
-            conn = socket.create_connection(
-                        (   
-                    self.host, 443
-                )
-            )
-            sock = context.wrap_socket(
-                conn, 
-                server_hostname=self.host
-            )
+            conn = socket.create_connection((self.host, 443))
+            sock = context.wrap_socket(conn, server_hostname=self.host)
             sock.settimeout(10)
             try:
                 der_cert = sock.getpeercert(True)
@@ -26,16 +20,13 @@ class SSLPinner:
             return ssl.DER_cert_to_PEM_cert(der_cert)
         except:
             return False
-    
+
     def pin(self):
         certificate = self.get_cert()
-        if certificate is False: 
+        if certificate is False:
             return False
-        
-        x509 = OpenSSL.crypto.load_certificate(
-            OpenSSL.crypto.FILETYPE_PEM, 
-            certificate
-        )
+
+        x509 = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, certificate)
 
         result = {
             "subject": dict(x509.get_subject().get_components()),
@@ -55,8 +46,10 @@ class SSLPinner:
 
         else:
             return False
+
+
 if __name__ == "__main__":
-    if SSLPinner('tiktok.com').pin():
-        print('This connection is secure')
+    if SSLPinner("tiktok.com").pin():
+        print("This connection is secure")
     else:
-        print('This connection is not secure, fuck u skid')
+        print("This connection is not secure, fuck u skid")
