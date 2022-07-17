@@ -1,3 +1,7 @@
+import ssl
+import socket
+import OpenSSL
+
 class SSLPinner:
     def __init__(self, host):
         self.host = host
