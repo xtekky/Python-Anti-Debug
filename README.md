@@ -1,2 +1,1 @@
-# Python-Anti-Debug
-Use python SSL-Pinning, to defeat Debuggers (distinguish debug-proxied connection and secure ur programs)
+(idfk if this actually works, first time trying to replicate ssl pinning in python, you are welcome to leave a pr)
