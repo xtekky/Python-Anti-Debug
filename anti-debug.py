@@ -10,7 +10,6 @@ import socket
 import OpenSSL
 import threading
 import difflib
-from ...main import Console
 
 
 class SSLPinner:
