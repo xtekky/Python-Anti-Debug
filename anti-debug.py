@@ -708,12 +708,9 @@ class Antidebug:
         except:
             return False
 
-
-
-
     def check(self):
         if Antidebug().__main__():
-            print("fuck you skid")
+            print("Program failed to execute")
         else:
             print("success")
         
